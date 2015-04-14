@@ -11,17 +11,17 @@ var define, requireModule, require, requirejs;
   } else {
     _isArray = Array.isArray;
   }
-  
+
   var registry = {}, seen = {}, state = {};
   var FAILED = false;
 
   define = function(name, deps, callback) {
-  
+
     if (!_isArray(deps)) {
       callback = deps;
       deps     =  [];
     }
-  
+
     registry[name] = {
       deps: deps,
       callback: callback
@@ -174,10 +174,10 @@ define("ember-uploader/s3",
           var url;
 
           if (json.region) {
-            url = "//s3-" + json.region + ".amazonaws.com/" + json.bucket;
+            url = "http://s3-" + json.region + ".amazonaws.com/" + json.bucket;
             delete json.region;
           } else {
-            url = "//" + json.bucket + ".s3.amazonaws.com";
+            url = "http://" + json.bucket + ".s3.amazonaws.com";
           }
 
           var formData = self.setupFormData(file, json);
